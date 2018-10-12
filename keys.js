@@ -30,10 +30,11 @@ class Keys {
         }
 
     }
-    
+
     findVenue() {
-        var URL = `https://rest.bandsintown.com/artists/ ${this.term}/events?app_id=codingbootcamp`;
+        var URL = `https://rest.bandsintown.com/artists/${this.term}/events?app_id=codingbootcamp`;
         // make our ajax call using the new query url
+        console.log(URL)
         request(URL, (err, response, body) => {
             // Parse the response body (string) to a JSON object
             var jsonData = JSON.parse(body);
@@ -41,11 +42,13 @@ class Keys {
             // assign the stuff we are going to print to the console to
             // a class property called data
             this.data =
-                `venue: ${jsonData.venue.name}
-                 
-            location: ${jsonData.venue.city}
+                `venue: ${jsonData.venue_name}
+            
+            location: ${jsonData.venue_city}
             
             time: ${jsonData.datetime}`
+        
+        this.printToConsole()
         });
     };
     findSong() {
@@ -70,6 +73,9 @@ class Keys {
             album: ${jsonData.search}`
         });
     };
+    printToConsole() {
+        console.log(this.data);
+    }
 };
 //spotify - this - song
 //movie - this
