@@ -8,12 +8,7 @@ var term = process.argv.slice(3).join(" ");
 
 var input = new Keys(search, term);
 
-input.movie();
-
-input.spotify();
-
-input.concert();
-
+input.callAPI();
 //console.log(term);
 
 //console.log(keys.spotify)
